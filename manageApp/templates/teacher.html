@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_content %}
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card card-table comman-shadow">
+                        <div class="card-body">
+
+                            <div class="page-header">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h3 class="page-title">Teacher</h3>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table
+                                    class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
+                                    <thead class="student-thread">
+                                        <tr>
+                                            <th>
+                                                <div class="form-check check-tables">
+                                                    <input class="form-check-input" type="checkbox" value="something">
+                                                </div>
+                                            </th>
+                                            <th>Name</th>
+                                            <th>DOB</th>
+                                            <th>DOJ</th>
+                                            <th>Compensation</th>
+                                            <th>Address</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for S_data in teacher %}
+                                        <tr>
+                                            <td>
+                                                <div class="form-check check-tables">
+                                                    <input class="form-check-input" type="checkbox" value="something">
+                                                </div>
+                                            </td>
+                                            <td>{{S_data.Common.Full_Name}}</td>
+                                            <td>{{S_data.Common.DateOfBirth}}</td>
+                                            <td>{{S_data.Common.DateOfJoining}}</td>
+                                            <td>{{S_data.Compensation}}</td>
+                                            <td>{{S_data.Common.Address}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Copyright © 2022 Dreamguys.</p>
+        </footer>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_content %}
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card card-table comman-shadow">
+                        <div class="card-body">
+
+                            <div class="page-header">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h3 class="page-title">Club's</h3>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table
+                                    class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
+                                    <thead class="student-thread">
+                                        <tr>
+                                            <th>
+                                                <div class="form-check check-tables">
+                                                    <input class="form-check-input" type="checkbox" value="something">
+                                                </div>
+                                            </th>
+                                            <th>Club_Name</th>
+                                            <th>Open_Time</th>
+                                            <th>Close_Time</th>
+                                            <th>Head_Of_Club</th>
+                                            <th>Contact</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for S_data in club %}
+                                        <tr>
+                                            <td>
+                                                <div class="form-check check-tables">
+                                                    <input class="form-check-input" type="checkbox" value="something">
+                                                </div>
+                                            </td>
+                                            <td>{{S_data.Club_Name}}</td>
+                                            <td>{{S_data.Open_Time}}</td>
+                                            <td>{{S_data.Close_Time}}</td>
+                                            <td>{{S_data.Head_Of_Club}}</td>
+                                            <td>{{S_data.Contact}}</td>
+                                        <td><a href="{% url 'club_delete' club_name=S_data.Club_Name %}">Delete</a></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Copyright © 2022 Dreamguys.</p>
+        </footer>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
