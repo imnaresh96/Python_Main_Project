@@ -40,6 +40,14 @@ def club_page(request):
 def book_page(request):
     book_data(request) #load book data
     return render(request,'book_page.html', data)
+
+def event_page(request):
+    event_data(request) #load event data
+    return render(request,'event_page.html', data)
+    
+def department_page(request):
+    department_data(request) #load department data
+    return render(request,'department_page.html', data)
     
 def teacher(request):
     teacher_data(request) #load teacher data
@@ -373,3 +381,44 @@ def delete_account(request):
     master=Master.objects.get(Email = request.session['email'])
     master.delete()
     return redirect(signin_page)
+
+# Add department    
+def add_department(request):
+    print(request.POST)
+    
+    Department.objects.create(
+        Depart_Name=request.POST['depart_name'],
+        HeadOfDepart=request.POST['headofdepart'],
+        Total_Faculty=request.POST['total_faculty'],
+        )
+
+    print('successfully')
+    return redirect(profile_page_teacher)
+
+    #club data
+def department_data(request):
+    # print(request.POST)
+    department = Department.objects.all()
+    data['department'] = department
+
+
+# Add Event  
+def add_event(request):
+    print(request.POST)
+    
+    Event.objects.create(
+        Event_Name=request.POST['event_name'],
+        Event_Date=request.POST['event_date'],
+        Event_Time=request.POST['event_time'],
+        Chief_Guest=request.POST['chief_guest'],
+        )
+
+    print('successfully')
+    return redirect(profile_page_teacher)
+
+
+#book data
+def event_data(request):
+    # print(request.POST)
+    event = Event.objects.all()
+    data['event'] = event
