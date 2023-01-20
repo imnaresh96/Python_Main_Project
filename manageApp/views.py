@@ -395,7 +395,7 @@ def add_department(request):
     print('successfully')
     return redirect(profile_page_teacher)
 
-    #club data
+#department data
 def department_data(request):
     # print(request.POST)
     department = Department.objects.all()
@@ -417,7 +417,7 @@ def add_event(request):
     return redirect(profile_page_teacher)
 
 
-#book data
+#event data
 def event_data(request):
     # print(request.POST)
     event = Event.objects.all()
