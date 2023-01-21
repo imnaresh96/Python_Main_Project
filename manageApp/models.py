@@ -109,3 +109,15 @@ class Event(models.Model):
     
     def __str__(self)-> str:
         return self.Event_Name
+
+# class Campus(models.Model):
+#     Campus_Name=models.CharField(max_length=40)
+#     Campus_Address=models.DateField(default='2022-11-21')
+#     =models.CharField(max_length=10)
+#     Chief_Guest=models.CharField(max_length=10)
+
+#     class Meta:
+#         db_table='campus'
+    
+#     def __str__(self)-> str:
+#         return self.Campus_Name
