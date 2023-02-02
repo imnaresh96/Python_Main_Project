@@ -360,7 +360,7 @@ def new_user_update(request):
     common.Address = request.POST['address']
 
     common.save()   
-    return redirect(signin_page)
+    return redirect(profile_page)
 
 
 def club_delete(request,club_name):
