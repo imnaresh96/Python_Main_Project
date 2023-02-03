@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import *
 from django.conf import settings
-from django.core.mail import send_mail
-from django.db.utils import IntegrityError
+from django.core.mail import *
+from django.db.utils import *
 import os
 from random import randint
 # Create your views here.
@@ -252,6 +252,7 @@ def otp_creation(request):
 
 # #otp send
 def otp_send(request):
+    email_to_list = [request.session]
     if request.session['otp'] == int(request.POST['otp']):
         print('otp match')
         master = Master.objects.get(Email = request.session['email'])
@@ -265,6 +266,10 @@ def otp_send(request):
     else:
         print('Wrong OTP')
         return redirect(forgot_password)
+
+    email_from = settings.EMAIL_HOST_USER
+    message = f"Your One Time Password for verification is: {request.session['otp']}."
+    send_mail(message, email_from, email_to_list)
     return redirect(signin_page)
     
 #student data
