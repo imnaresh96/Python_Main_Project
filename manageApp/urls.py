@@ -29,6 +29,7 @@ urlpatterns=[
     path('password_reset/',password_reset,name='password_reset'),
     path('signup/',signup,name='signup'),
     path('otp_page/',otp_page,name='otp_page'),
+    path('otp_page2/',otp_page2,name='otp_page2'),
     path('forgot_password_page/',forgot_password_page,name='forgot_password_page'),
     path('otp_creation/',otp_creation,name='otp_creation'),
     path('logout/',logout,name='logout'),

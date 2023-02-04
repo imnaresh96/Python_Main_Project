@@ -32,7 +32,7 @@ class Common(models.Model):
     Full_Name=models.CharField(max_length=50)
     DateOfBirth=models.DateField(default='2022-11-21')
     DateOfJoining=models.DateField(default='2022-11-21')
-    Address=models.CharField(max_length=100)
+    Address=models.CharField(max_length=100, default='none')
 
     class Meta:
         db_table="common"
