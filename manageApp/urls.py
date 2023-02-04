@@ -47,5 +47,6 @@ urlpatterns=[
     path('add_event/',add_event,name='add_event'),
     path('event_data/',event_data,name='event_data'),
     path('department_data/',department_data,name='department_data'),
+    # path('verify_otp/',verify_otp,name='verify_otp'),
 
 ]

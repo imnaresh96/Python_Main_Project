@@ -252,7 +252,7 @@ def otp_creation(request):
 
 # #otp send
 def otp_send(request):
-    email_to_list = [request.session]
+    # email_to_list = [request.session]
     if request.session['otp'] == int(request.POST['otp']):
         print('otp match')
         master = Master.objects.get(Email = request.session['email'])
@@ -267,10 +267,76 @@ def otp_send(request):
         print('Wrong OTP')
         return redirect(forgot_password)
 
-    email_from = settings.EMAIL_HOST_USER
-    message = f"Your One Time Password for verification is: {request.session['otp']}."
-    send_mail(message, email_from, email_to_list)
+    # email_from = settings.EMAIL_HOST_USER
+    # message = f"Your One Time Password for verification is: {request.session['otp']}."
+    # send_mail(message, email_from, email_to_list)
     return redirect(signin_page)
+
+
+# send_otp
+# def otp_send(request, otp_for="register"):
+#     print(otp_for)
+#     otp_creation(request)
+
+#     email_to_list = [request.session['reg_data']['email'],]
+
+#     if otp_for == 'activate':
+#         request.session['otp_for'] = 'activate'
+#         subject = f'OTP for institute Account Activation'
+#     elif otp_for == 'recover_pwd':
+#         request.session['otp_for'] = 'recover_pwd'
+#         subject = f'OTP for institute Password Recovery'
+#     else:
+#         request.session['otp_for'] = 'register'
+#         subject = f'OTP for institute Registration'
+
+#     email_from = settings.EMAIL_HOST_USER
+
+#     message = f"Your One Time Password for verification is: {request.session['otp']}."
+
+#     send_mail(subject, message, email_from, email_to_list)
+
+
+# verify otp
+# def verify_otp(request, verify_for="register"):
+
+#     if request.session['otp'] == int(request.POST['otp']):
+
+#         if verify_for == 'activate':
+#             master = Master.objects.get(Email=request.session['reg_data']['email'])
+#             # master.Password = request.session['reg_data']['password']
+#             master.IsActive = True
+#             master.save()
+
+
+#             return redirect(profile_page)
+#         elif verify_for == 'recover_pwd':
+#             master = Master.objects.get(Email=request.session['reg_data']['email'])
+#             master.Password = request.session['reg_data']['password']
+#             master.save()
+#         else:
+#             print('before new account')
+#             master = Master.objects.create(
+#                 Email = request.session['reg_data']['email'],
+#                 Password = request.session['reg_data']['password'],
+#                 IsActive = True,
+#             )
+
+#             Common.objects.create(
+#                 Master = master,
+#             )
+#             print('after new account')
+
+#         print("verified.")
+#         del request.session['reg_data']
+
+#     else:
+#         print("Invalid OTP")
+        
+#         return redirect(otp_page)
+    
+#     return redirect(signin_page)
+
     
 #student data
 def student_data(request):
